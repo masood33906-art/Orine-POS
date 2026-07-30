@@ -1,0 +1,27 @@
+workflows:
+  android-debug:
+    name: Orine POS Android Debug
+
+    environment:
+      node: 20
+
+    scripts:
+      - name: Install pnpm
+        script: npm install -g pnpm
+
+      - name: Install dependencies
+        script: pnpm install
+
+      - name: Build React App
+        script: pnpm build
+
+      - name: Sync Capacitor
+        script: npx cap sync android
+
+      - name: Build APK
+        script: |
+          cd android
+          ./gradlew assembleDebug
+
+    artifacts:
+      - android/app/build/outputs/**/*.apk
