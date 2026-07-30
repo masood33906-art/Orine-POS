@@ -1,34 +1,15 @@
-workflows:
-  android-debug:
-    name: Orine POS Android Debug
+- name: Setup pnpm
+  uses: pnpm/action-setup@v4
+  with:
+    version: 10
 
-    environment:
-      node: 20
-      java: 21
+- name: Setup Node.js
+  uses: actions/setup-node@v5
+  with:
+    node-version: 20
 
-    scripts:
-      - name: Enable Corepack
-        script: |
-          corepack enable
-
-      - name: Install dependencies
-        script: |
-          corepack prepare pnpm@latest --activate
-          pnpm install
-
-      - name: Build React App
-        script: |
-          pnpm build
-
-      - name: Sync Capacitor
-        script: |
-          npx cap sync android
-
-      - name: Build Debug APK
-        script: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
-    artifacts:
-      - android/app/build/outputs/apk/debug/app-debug.apk
+- name: Setup Java
+  uses: actions/setup-java@v4
+  with:
+    distribution: temurin
+    java-version: 21
