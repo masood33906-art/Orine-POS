@@ -6,8 +6,6 @@ workflows:
       node: 20
 
     scripts:
-      - name: Install pnpm
-        script: npm install -g pnpm
 
       - name: Install dependencies
         script: pnpm install
