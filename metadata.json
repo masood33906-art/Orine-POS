@@ -1,0 +1,6 @@
+{
+  "name": "Orine POS",
+  "description": "Modern, fast, and simple Android POS application for small hardware stores with Sales, Inventory, Customer Dues, and Analytics.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
